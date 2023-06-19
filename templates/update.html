@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+Update
+{% endblock  %}
 
 {% block content %}
 
@@ -7,10 +12,10 @@
         <div class="col-md-12">
             <h1 class="text-center display-4">Update Todo</h1>
         </div>
-        <div class="col-md-12">
-            <form method="POST" action="#">
-                <label for="title">{% block title %}Update{% endblock  %}</label>
-                <input type="text" name="title" id="title" class="form-control mb-2"/>
+        <div class="col-md-8 offset-md-2">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy}}
                 <input type="submit" class="btn btn-dark btn-block" value="Update"/>
             </form>
         </div>
